@@ -1,0 +1,44 @@
+import java.util.Scanner
+
+fun main() {
+    // 1. Configura o Scanner para ler a entrada do usuário
+    val scanner = Scanner(System.`in`)
+
+    println("--- Calculadora de Divisão Segura ---")
+
+    // 2. Leitura do Primeiro Valor (Numerador)
+    println("Informe o PRIMEIRO valor (Numerador):")
+    // Usamos nextDouble() para permitir números com casas decimais
+    val valor1 = scanner.nextDouble()
+
+    // 3. Leitura e Validação do Segundo Valor (Denominador)
+    var valor2: Double
+
+    // O loop 'do-while' garante que o código dentro do 'do' será executado pelo menos uma vez
+    do {
+        println("Informe o SEGUNDO valor (Denominador):")
+        println("(ATENÇÃO: Este valor deve ser MAIOR que zero.)")
+
+        // Lê o valor
+        valor2 = scanner.nextDouble()
+
+        // Verifica a condição de erro
+        if (valor2 <= 0) {
+            println("\nERRO: O segundo valor não pode ser zero ou negativo.")
+            println("Por favor, informe um novo valor.\n")
+        }
+
+        // O loop continua ENQUANTO o valor lido for menor ou igual a zero
+    } while (valor2 <= 0)
+
+    // 4. Cálculo da Divisão
+    val resultado = valor1 / valor2
+
+    // 5. Exibição do Resultado
+    println("\n--- RESULTADO ---")
+    println("Primeiro valor lido: $valor1")
+    println("Segundo valor validado: $valor2")
+    println("O resultado da divisão ($valor1 / $valor2) é: $resultado")
+
+    scanner.close()
+}
