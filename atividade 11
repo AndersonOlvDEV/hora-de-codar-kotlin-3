@@ -1,0 +1,40 @@
+import java.util.Scanner
+
+fun main() {
+    val scanner = Scanner(System.`in`)
+    var n: Int
+
+    println("--- Gerador de Tabuadas ---")
+
+    // 1. Leitura e Validação do Valor N
+    while (true) {
+        print("Digite um valor inteiro N (para gerar as tabuadas de 1 a N): ")
+        if (scanner.hasNextInt()) {
+            n = scanner.nextInt()
+            if (n > 0) {
+                break
+            } else {
+                println("⚠️ O valor de N deve ser um inteiro positivo. Tente novamente.")
+            }
+        } else {
+            println("⚠️ Entrada inválida. Por favor, digite um número inteiro.")
+            scanner.next() // Descarta a entrada inválida
+        }
+    }
+    
+    println("\nGerando tabuadas de 1 até $n...")
+
+    // 2. Loop Externo: Controla qual tabuada será gerada (de 1 a N)
+    for (tabuada in 1..n) {
+        println("\n--- Tabuada do $tabuada ---")
+        
+        // 3. Loop Interno: Gera as multiplicações de 1 a 10 para a 'tabuada' atual
+        for (i in 1..10) {
+            val resultado = tabuada * i
+            // Imprime o cálculo no formato: X x Y = Z
+            println("$tabuada x $i = $resultado")
+        }
+    }
+
+    println("----------------------------")
+}
