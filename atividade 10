@@ -1,0 +1,45 @@
+import java.util.Scanner
+
+fun main() {
+    val scanner = Scanner(System.`in`)
+    val totalValores = 10
+    val limiteInferior = 24
+    val limiteSuperior = 42
+    
+    // Contadores
+    var dentroDoIntervalo = 0
+    var foraDoIntervalo = 0
+
+    println("--- Análise de Intervalo [24, 42] ---")
+    println("Por favor, digite **$totalValores** valores inteiros.")
+    
+    // 1. Loop para ler os 10 valores
+    for (i in 1..totalValores) {
+        print("Digite o valor #$i: ")
+        
+        // Garante que a entrada seja um número inteiro
+        if (scanner.hasNextInt()) {
+            val valor = scanner.nextInt()
+            
+            // 2. Verificação do Intervalo (24 <= valor <= 42)
+            // O operador 'in' em Kotlin é ideal para verificar se um valor está dentro de uma progressão
+            if (valor in limiteInferior..limiteSuperior) {
+                dentroDoIntervalo++
+            } else {
+                foraDoIntervalo++
+            }
+        } else {
+            // Trata entradas não numéricas.
+            println("⚠️ Entrada inválida! Por favor, digite um número inteiro.")
+            scanner.next() // Descarta a entrada inválida
+            i-- // Decrementa 'i' para garantir que o usuário ainda digite 10 valores válidos
+        }
+    }
+
+    // 3. Exibição dos Resultados
+    println("\n--- Resultados Finais ---")
+    println("Intervalo Analisado: **[$limiteInferior, $limiteSuperior]**")
+    println("Valores lidos que estão **DENTRO** do intervalo: **$dentroDoIntervalo**")
+    println("Valores lidos que estão **FORA** do intervalo: **$foraDoIntervalo**")
+    println("-------------------------")
+}
