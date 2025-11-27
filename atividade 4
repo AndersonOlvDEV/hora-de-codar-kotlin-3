@@ -1,0 +1,36 @@
+fun main() {
+    val limiteInferior = 15
+    val limiteSuperior = 100
+    
+    // Variáveis para armazenar a soma total e a contagem de números.
+    // Usamos Long para 'somaTotal' para garantir que o resultado não estoure, 
+    // embora Int seria suficiente para este intervalo, é uma boa prática para somas.
+    var somaTotal: Long = 0
+    var contador: Int = 0
+
+    // 1. Iteração e Soma
+    // O 'in' cria uma progressão que inclui tanto 15 quanto 100.
+    for (numero in limiteInferior..limiteSuperior) {
+        somaTotal += numero // Adiciona o número atual à soma total.
+        contador++         // Incrementa o contador de números.
+    }
+
+    // 2. Cálculo da Média
+    // Verificamos se há números para evitar divisão por zero, embora neste caso
+    // o contador sempre será maior que zero.
+    if (contador > 0) {
+        // A média é a soma total dividida pela quantidade de números.
+        // Convertemos a soma para Double para garantir uma média com casas decimais.
+        val mediaAritmetica = somaTotal.toDouble() / contador
+        
+        // 3. Exibição do Resultado
+        println("--- Cálculo da Média Aritmética ---")
+        println("Intervalo: $limiteInferior a $limiteSuperior")
+        println("Soma total dos números: $somaTotal")
+        println("Quantidade de números no intervalo: $contador")
+        println("A média aritmética é: **$mediaAritmetica**")
+        println("------------------------------------")
+    } else {
+        println("O intervalo especificado está vazio. Não foi possível calcular a média.")
+    }
+}
