@@ -1,0 +1,58 @@
+import java.util.Scanner
+
+fun main() {
+    // Cria um objeto Scanner para ler a entrada do usuário
+    val scanner = Scanner(System.`in`)
+    
+    println("--- Cálculo da Média de um Intervalo ---")
+    
+    // 1. Coleta o primeiro número (menor)
+    print("Digite o primeiro número inteiro (menor): ")
+    // Leitura garantida que usa um loop até que um inteiro válido seja fornecido
+    var primeiroNumero: Int
+    while (true) {
+        if (scanner.hasNextInt()) {
+            primeiroNumero = scanner.nextInt()
+            break
+        } else {
+            println("Entrada inválida. Por favor, digite um número inteiro.")
+            scanner.next() // Descarta a entrada inválida
+        }
+    }
+    
+    // 2. Coleta o segundo número (maior)
+    var segundoNumero: Int
+    while (true) {
+        print("Digite o segundo número inteiro (maior que $primeiroNumero): ")
+        if (scanner.hasNextInt()) {
+            segundoNumero = scanner.nextInt()
+            if (segundoNumero > primeiroNumero) {
+                break
+            } else {
+                println("O segundo número deve ser maior que o primeiro ($primeiroNumero). Tente novamente.")
+            }
+        } else {
+            println("Entrada inválida. Por favor, digite um número inteiro.")
+            scanner.next()
+        }
+    }
+    
+    // 3. Inicializa as variáveis para cálculo
+    var somaTotal: Long = 0 // Usamos Long para garantir que a soma não estoure
+    var contador: Int = 0
+
+    // 4. Iteração e Soma
+    // Percorre todos os números do primeiroNumero (inclusive) até o segundoNumero (inclusive).
+    for (numero in primeiroNumero..segundoNumero) {
+        somaTotal += numero // Adiciona o número atual à soma total
+        contador++         // Conta quantos números foram somados
+    }
+
+    // 5. Cálculo da Média
+    if (contador > 0) {
+        // Converte a soma para Double para garantir o cálculo com casas decimais.
+        val mediaAritmetica = somaTotal.toDouble() / contador
+        
+        // 6. Exibição do Resultado
+        println("\n--- Resultados ---")
+        println("Intervalo: **$primeiroNumero** a **$
