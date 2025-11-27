@@ -1,0 +1,20 @@
+fun main() {
+    val inicio = 101 // O primeiro inteiro maior que 100
+    val fim = inicio + 9 // Para incluir 10 números (101 a 110)
+    val quantidade = 10
+
+    println("--- Imprimindo os $quantidade primeiros inteiros maiores que 100 ---")
+
+    // O loop 'for' itera do 'inicio' (101) até o 'fim' (110), inclusive.
+    for (numero in inicio..fim) {
+        println(numero)
+    }
+    
+    // Uma forma alternativa e mais compacta (para fins de demonstração):
+    /*
+    println("\nUsando função 'take':")
+    (101..Int.MAX_VALUE).take(10).forEach { println(it) }
+    */
+
+    println("---------------------------------------------------------")
+}
