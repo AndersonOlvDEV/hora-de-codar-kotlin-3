@@ -1,0 +1,12 @@
+fun main() {
+    println("--- Imprimindo números de 10 a 1 ---")
+    
+    // O loop 'for' itera com a variável 'numero' começando em 10,
+    // descendo de um em um, até chegar a 1.
+    for (numero in 10 downTo 1) {
+        // Imprime o número atual.
+        println(numero)
+    }
+
+    println("------------------------------------")
+}
