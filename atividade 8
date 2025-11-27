@@ -1,0 +1,36 @@
+import java.util.Scanner
+
+fun main() {
+    val scanner = Scanner(System.`in`)
+    var n: Int
+    
+    println("--- Impressão de Sequência de 1 a N ---")
+    
+    // 1. Leitura e Validação do Valor N
+    // O problema garante N > 0, mas adicionamos uma pequena validação
+    // para garantir que o usuário digite um número inteiro positivo.
+    while (true) {
+        print("Digite um valor inteiro N (N > 0): ")
+        if (scanner.hasNextInt()) {
+            n = scanner.nextInt()
+            if (n > 0) {
+                break
+            } else {
+                println("⚠️ O valor de N deve ser maior que zero. Tente novamente.")
+            }
+        } else {
+            println("⚠️ Entrada inválida. Por favor, digite um número inteiro.")
+            scanner.next() // Descarta a entrada inválida
+        }
+    }
+    
+    println("\nImprimindo números de 1 até $n (inclusive):")
+    
+    // 2. Iteração e Impressão
+    // O 'in' cria uma progressão fechada que vai de 1 até o valor de N.
+    for (i in 1..n) {
+        print("$i ")
+    }
+    
+    println("\n------------------------------------")
+}
