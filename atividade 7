@@ -1,0 +1,46 @@
+import java.util.Scanner
+
+fun main() {
+    val scanner = Scanner(System.`in`)
+    val totalNotas = 6
+    var somaNotas = 0.0
+
+    println("--- Cálculo da Média Simples (Total de $totalNotas Notas) ---")
+
+    // 1. Loop principal para ler as 6 notas
+    for (i in 1..totalNotas) {
+        // Chama a função para ler e validar a nota
+        val nota = lerNotaValida(scanner, i)
+        // Acumula a nota válida na soma total
+        somaNotas += nota
+    }
+
+    // 2. Cálculo da Média Simples
+    val mediaFinal = somaNotas / totalNotas.toDouble()
+
+    // 3. Exibição do Resultado
+    println("\n--- Resultado Final ---")
+    println("Soma total das notas: %.2f".format(somaNotas))
+    println("Quantidade de notas: $totalNotas")
+    println("A Média Simples do aluno é: **%.2f**".format(mediaFinal))
+    println("-----------------------")
+}
+
+/**
+ * Função auxiliar para ler e validar uma nota. 
+ * Solicita um novo valor repetidamente até que seja um número válido entre 0.0 e 10.0.
+ * @param scanner O objeto Scanner usado para leitura.
+ * @param indice O número da nota que está sendo lida (para o prompt).
+ * @return Um valor Double válido (entre 0.0 e 10.0).
+ */
+fun lerNotaValida(scanner: Scanner, indice: Int): Double {
+    var nota: Double
+    while (true) {
+        print("Digite a nota $indice (0.0 a 10.0): ")
+        
+        // Verifica se a próxima entrada é um Double
+        if (scanner.hasNextDouble()) {
+            nota = scanner.nextDouble()
+            
+            // Verifica se a nota está no intervalo permitido (0 a 10)
+            if (nota >= 0.0
