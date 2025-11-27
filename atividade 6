@@ -1,0 +1,75 @@
+import java.util.Scanner
+
+fun main() {
+    val scanner = Scanner(System.`in`)
+    val notaAprovacao = 9.5
+    var alunosAprovados = 0
+    var continuar = true
+
+    println("--- Sistema de Cálculo de Média Final ---")
+    println("Nota de aprovação mínima: **$notaAprovacao**")
+
+    while (continuar) {
+        println("\n----- Novo Aluno -----")
+        
+        // 1. Leitura e Validação das Notas
+        val nota1 = lerNota(scanner, "Digite a primeira nota (0.0 a 10.0): ")
+        val nota2 = lerNota(scanner, "Digite a segunda nota (0.0 a 10.0): ")
+
+        // 2. Cálculo da Média Final
+        val mediaFinal = (nota1 + nota2) / 2.0
+
+        println("\nMédia Final do Aluno: **%.2f**".format(mediaFinal))
+
+        // 3. Verificação da Aprovação
+        if (mediaFinal >= notaAprovacao) {
+            println("Status: ✅ **APROVADO!**")
+            alunosAprovados++
+        } else {
+            println("Status: ❌ REPROVADO.")
+        }
+
+        // 4. Solicitação para Continuar
+        var resposta: String
+        do {
+            print("\nCalcular a média de outro aluno (S/N)? ")
+            // Lê a resposta, remove espaços, converte para maiúscula e pega o primeiro caractere
+            resposta = scanner.next().trim().uppercase()
+            
+            if (resposta != "S" && resposta != "N") {
+                println("Resposta inválida. Por favor, digite 'S' para Sim ou 'N' para Não.")
+            }
+        } while (resposta != "S" && resposta != "N")
+
+        // 5. Atualiza a condição de loop
+        if (resposta == "N") {
+            continuar = false
+        }
+    }
+
+    // 6. Encerramento e Exibição do Total
+    println("\n======================================")
+    println("Processo finalizado.")
+    println("Quantidade total de alunos aprovados: **$alunosAprovados**")
+    println("======================================")
+}
+
+/**
+ * Função auxiliar para ler e validar uma nota.
+ */
+fun lerNota(scanner: Scanner, prompt: String): Double {
+    var nota: Double
+    while (true) {
+        print(prompt)
+        // Verifica se a próxima entrada é um Double
+        if (scanner.hasNextDouble()) {
+            nota = scanner.nextDouble()
+            // Valida se a nota está no intervalo correto
+            if (nota in 0.0..10.0) {
+                return nota
+            } else {
+                println("A nota deve estar entre 0.0 e 10.0. Tente novamente.")
+            }
+        } else {
+            println("Entrada inválida. Por favor, digite um número.")
+            scanner.next() //
